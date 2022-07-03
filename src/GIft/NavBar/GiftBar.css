@@ -1,0 +1,53 @@
+.giftBar{
+    border-bottom:3px solid rgba(240, 248, 255, 0.373);
+    width: 100%;
+    display: block;
+    padding: 3px;
+    position: fixed;
+    top: 0px;
+    background-color: #282c34;
+}
+
+.content{
+    display: inline-block;
+    width: 58%;
+    background-color: rgba(127, 255, 212, 0.386);
+    margin: 1%;
+    padding: 5px;
+    vertical-align: middle;
+}
+.rightContent{
+    display: inline-block;
+    width: 38%;
+    background-color: rgba(127, 255, 212, 0.386);
+    margin: 1%;
+    padding: 5px; 
+    vertical-align: middle;
+}
+.giftPost{
+    display: inline-block;
+    height: 250px;
+    width: 130px;padding: 5px;
+    background-color: black;
+    margin-left: 5px;
+}
+.gift{
+    display: block;
+
+   
+}
+.navitem{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 18px;
+    margin-left: 20px;
+}
+.contentBody{
+    margin-top: 45px;
+    width: 100%;
+}
+.centerSlide{
+    width: 400px;
+   text-align: center;
+   
+}

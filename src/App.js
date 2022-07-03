@@ -9,6 +9,8 @@ import { Provider } from 'react-redux';
 import firebase from 'firebase/app'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Login from './BackEnd/Login/Login'
+import GiftHome from './GIft/GiftHome'
+import EditContent from './GIft/Content/EditContent';
 
 function App() {
   const rrfConfig = {
@@ -27,7 +29,8 @@ function App() {
 
         <div className='body App-header'>
           <Router>
-            <Login />
+            <Route path='/EditContent/secretkey4292342329094' exact><EditContent></EditContent> </Route>
+            <GiftHome />
 
           </Router>
         </div>
