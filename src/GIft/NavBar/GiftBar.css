@@ -91,3 +91,29 @@
     height: 21px;
     margin-left: -30px;
 }
+
+/* Product Display */
+.searchProductDisplay{
+    display: inline-block;
+    width: 200px;
+    float: right;
+    margin-right: 10px;
+}
+.searchBtnProductDisplay{
+    float: right;
+
+}
+.cardProductDisplay{
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 2px 2px 4px #282c34;
+    border-radius: 3px;
+}
+
+.productsProductDisplay{
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 2px 2px 4px #282c34;
+    border-radius: 3px;
+    
+}
