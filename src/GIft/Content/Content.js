@@ -23,14 +23,14 @@ class Content extends Component {
 
                 if (this.props.aka[0].product) {
                     for (let prod of this.props.aka[0].product) {
-                        console.log(prod)
+                        //    console.log(prod)
                         let newSpan = document.createElement('span');
                         newSpan.innerHTML = prod.frameWork;
                         frame.appendChild(newSpan);
                     }
                     var count = 0;
                     for (let prod of this.props.aka[0].product) {
-                        console.log(prod)
+                        //   console.log(prod)
                         let newSpan = document.createElement('div');
                         if (count === 0)
                             newSpan.setAttribute("class", "carousel-item active centerSlide")
@@ -53,15 +53,10 @@ class Content extends Component {
         setTimeout(AddData, 200)
         return (
             <div className='content'>
-
-
-
-                <div id='postData' >
-
+                <div>
+                    <h5 className='contentSuprise'>Suprise! Let's make you life interesting</h5>
                 </div>
-
-
-                <div id="carouselId" class="carousel slide " data-ride="carousel">
+                <div id="carouselId" className="carousel slide p-3 slideDisplay" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselId" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselId" data-slide-to="1"></li>
@@ -79,6 +74,14 @@ class Content extends Component {
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+
+
+                <div id='postData' >
+
+                </div>
+
+
+
             </div>
         )
     }

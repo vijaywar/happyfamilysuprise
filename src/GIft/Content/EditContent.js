@@ -19,7 +19,11 @@ class EditContent extends Component {
         const { firestore } = this.props;
         if (this.props.aka[0]) {
             var news;
+            var update = this.state.frameWork;
+            update = update.replace("style=\"width:120px;height:240px;\"", " class=\"giftPost\" ");
+            this.setState({ frameWork: update });
             if (this.props.aka[0].product) {
+
                 news = {
                     'product': [{
                         ...this.state
@@ -119,3 +123,9 @@ export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect((props) => [{ collection: 'gifts', doc: 'content' }]), firebaseConnect()
 )(EditContent)
+
+
+/*
+ style="width:120px;height:240px;" 
+
+ */
