@@ -6,6 +6,7 @@
     position: fixed;
     top: 0px;
     background-color: #282c34;
+    z-index: 2000;
 }
 
 .content{
@@ -115,5 +116,35 @@
     margin: 5px;
     box-shadow: 2px 2px 4px #282c34;
     border-radius: 3px;
+    
+}
+
+.searchCardBox{
+    display: inline-block;
+    float: right;
+}
+
+@media screen and (max-width: 400px) {
+    .rightContent{
+        width: 100%;
+    }
+    .content{
+        width: 100%;
+    }
+    .cardProductDisplay{
+        height: 90px;
+    }
+    .searchCardBox{
+        display: block;
+        float: right;
+        margin-top: 5px;
+    }
+    .searchBtnProductDisplay{
+        display: inline-block; 
+    }
+    .searchProductDisplay{
+        display: inline-block;
+        width: 150px;
+    }
     
 }

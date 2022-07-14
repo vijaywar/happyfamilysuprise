@@ -13,6 +13,19 @@ class Content extends Component {
             message: 'demo product',
             other: '', mainDate: new Date(), createdDate: new Date(), modifiedDate: new Date()
         }
+        var tags = localStorage.getItem('giftTarget');
+        tags = JSON.parse(tags);
+        let ContainsTag = (itemTags) => {
+            if (tags == null) {
+                return true;
+            }
+            for (var tag of itemTags.split(",")) {
+                if (tags != null && tags.includes(tag.trim())) {
+                    return true;
+                }
+            }
+            return false;
+        }
         let AddData = () => {
 
             let frame = document.getElementById("postData");
@@ -24,24 +37,29 @@ class Content extends Component {
                 if (this.props.aka[0].product) {
                     for (let prod of this.props.aka[0].product) {
                         //    console.log(prod)
-                        let newSpan = document.createElement('span');
-                        newSpan.innerHTML = prod.frameWork;
-                        frame.appendChild(newSpan);
+                        if (ContainsTag(prod.tags)) {
+                            let newSpan = document.createElement('span');
+
+                            newSpan.innerHTML = prod.frameWork;
+                            frame.appendChild(newSpan);
+                        }
                     }
                     var count = 0;
-                    for (let prod of this.props.aka[0].product) {
-                        //   console.log(prod)
-                        let newSpan = document.createElement('div');
-                        if (count === 0)
-                            newSpan.setAttribute("class", "carousel-item active centerSlide")
-                        else
-                            newSpan.setAttribute("class", "carousel-item centerSlide")
-                        count++
+                    for (let prodd of this.props.aka[0].product) {
+                        // console.log(prod)
+                        if (ContainsTag(prodd.tags)) {
+                            let newSpan = document.createElement('div');
+                            if (count === 0)
+                                newSpan.setAttribute("class", "carousel-item active centerSlide")
+                            else
+                                newSpan.setAttribute("class", "carousel-item centerSlide")
+                            count++
 
-                        let imgEle = document.createElement('span');
-                        imgEle.innerHTML = prod.image;
-                        newSpan.appendChild(imgEle)
-                        frameCores.appendChild(newSpan);
+                            let imgEle = document.createElement('span');
+                            imgEle.innerHTML = prodd.image;
+                            newSpan.appendChild(imgEle)
+                            frameCores.appendChild(newSpan);
+                        }
                     }
 
                 }

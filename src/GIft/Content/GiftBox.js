@@ -11,6 +11,7 @@ export default class GiftBox extends Component {
             }
         }
         localStorage.setItem('giftTarget', JSON.stringify(giftTarget));
+        window.location.reload();
     }
     componentDidMount = () => {
         var giftTarget = localStorage.getItem('giftTarget');
@@ -47,7 +48,7 @@ export default class GiftBox extends Component {
                                 <div className='card-header textBlack textSmall'>who are we planning to gift</div>
                                 <div class="form-check">
                                     <label class="form-check-label textSmall">
-                                        <input type="checkbox" name='giftPersonData' class="form-check-input" value="Brother" defaultChecked />
+                                        <input type="checkbox" name='giftPersonData' class="form-check-input" value="Brother" />
                                         Brother
                                     </label>
                                     <label class="form-check-label textSmall">

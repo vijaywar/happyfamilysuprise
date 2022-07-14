@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 class ProductDisplay extends Component {
 
     state = {
-        searchMessage: '', prevMessage: 'old'
+        searchMessage: '', prevMessage: 'old', tags: null, type: -1
     }
 
     search() {
@@ -18,10 +18,57 @@ class ProductDisplay extends Component {
         }
 
     }
+    food = () => {
+        if (this.state.type !== 0) {
+            this.setState({ type: 0 });
+            this.AddData();
+        }
+    }
+    fashio = () => {
+        if (this.state.type !== 1) {
+            this.setState({ type: 1 });
+            this.AddData();
+        }
+    }
+    all = () => {
+        if (this.state.type !== -1) {
+            this.setState({ type: -1 });
+            this.AddData();
+        }
+    }
+
+    ContainsTag = (itemTags) => {
+        if (this.state.tags == null) {
+            return true;
+        }
+        for (var tag of itemTags.split(",")) {
+            if (this.state.tags != null && this.state.tags.includes(tag.trim())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    ContainsFood = (itemTags) => {
+        if (this.state.type !== -1) {
+            var food = true;
+            if (this.state.type !== 0) {
+                food = false;
+            }
+            for (var tag of itemTags.split(",")) {
+                if (tag.trim() === 'food') {
+                    return food;
+                }
+            }
+            return !food;
+        }
+        return true;
+    }
     onchange = (e) => { this.setState({ [e.target.name]: e.target.value }) }
     AddData = () => {
-
-        console.log(this.state);
+        var tags = localStorage.getItem('giftTarget');
+        tags = JSON.parse(tags);
+        this.setState({ tags: tags })
+        //console.log(this.state);
         let frame = document.getElementById("postDataProd");
         let frameCores = document.getElementById("couroselProd");
         frame.innerHTML = '';
@@ -31,12 +78,13 @@ class ProductDisplay extends Component {
 
             if (this.props.aka[0].product) {
                 for (let prod of this.props.aka[0].product) {
-                    if (this.state.searchMessage != null && this.state.searchMessage !== '' && prod.message.includes(this.state.searchMessage)) {
+
+                    if (this.state.searchMessage != null && this.state.searchMessage !== '' && prod.message.includes(this.state.searchMessage) && this.ContainsTag(prod.tags) && this.ContainsFood(prod.tags)) {
                         let newSpan = document.createElement('span');
                         newSpan.innerHTML = prod.frameWork;
                         frame.appendChild(newSpan);
                     }
-                    else if (this.state.searchMessage === null || this.state.searchMessage === '') {
+                    else if ((this.state.searchMessage === null || this.state.searchMessage === '') && this.ContainsTag(prod.tags) && this.ContainsFood(prod.tags)) {
                         let newSpan = document.createElement('span');
                         newSpan.innerHTML = prod.frameWork;
                         frame.appendChild(newSpan);
@@ -50,6 +98,7 @@ class ProductDisplay extends Component {
     }
     componentDidMount() {
 
+
         setTimeout(this.AddData, 200)
     }
     render() {
@@ -57,12 +106,15 @@ class ProductDisplay extends Component {
             <div>
                 <div className="cardProductDisplay">
                     <div className="filterbar">
-                        <button type="button" className="btn btn-secondary">Fashion</button>
-                        <button type="button" className="btn btn-secondary ml-2">Food</button>
-                        <button type="button" onClick={this.search.bind(this)} className="btn btn-secondary ml-2 searchBtnProductDisplay">Search</button>
+                        <button type="button" onClick={this.fashion.bind(this)} className="btn btn-secondary">Fashion</button>
+                        <button onClick={this.food.bind(this)} type="button" className="btn btn-secondary ml-2">Food</button>
+                        <button onClick={this.all.bind(this)} type="button" className="btn btn-secondary ml-2">All</button>
 
-                        <input type="text" name="searchMessage" id='searchTextMessage' onChange={this.onchange} class="form-control searchProductDisplay" placeholder="search" />
+                        <div className="searchCardBox">
+                            <button type="button" onClick={this.search.bind(this)} className="btn btn-secondary ml-2 searchBtnProductDisplay">Search</button>
 
+                            <input type="text" name="searchMessage" id='searchTextMessage' onChange={this.onchange} class="form-control searchProductDisplay" placeholder="search" />
+                        </div>
                     </div>
 
                 </div>

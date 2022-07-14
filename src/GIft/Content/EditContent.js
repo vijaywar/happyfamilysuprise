@@ -62,8 +62,8 @@ class EditContent extends Component {
     render() {
 
         return (
-            <div className=' m-2 row giftCarddd justify-content-center'>
-                <div className="bg-white m-5  col-md-6 ">
+            <div className='smallText m-2 row giftCarddd justify-content-center'>
+                <div className="bg-white m-5  col-lg-6  ">
 
                     <div className="body-header py-2 "><h3>Add New</h3> </div>
                     <div class="form-group">
@@ -73,13 +73,13 @@ class EditContent extends Component {
                     </div>
                     <div class="form-group">
                         <label for="">Image</label>
-                        <input onChange={this.ChangeHandle} type="text" class="form-control" name="image" value={this.state.image} aria-describedby="helpId" placeholder="Enter Image" />
+                        <textarea onChange={this.ChangeHandle} class="form-control" name="image" value={this.state.image} aria-describedby="helpId" rows="7" placeholder="Enter Image" />
 
                     </div>
 
                     <div class="form-group">
                         <label for="">Frame</label>
-                        <textarea onChange={this.ChangeHandle} class="form-control" name="frameWork" value={this.state.frameWork} rows="3"></textarea>
+                        <textarea onChange={this.ChangeHandle} class="form-control" name="frameWork" value={this.state.frameWork} rows="7"></textarea>
                     </div>
                     <div class="form-group col-5 inline" >
                         <label for="">Priority</label>
