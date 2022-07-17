@@ -13,27 +13,25 @@ class ProductDisplay extends Component {
 
         if (this.state.searchMessage !== this.state.prevMessage) {
             let message = this.state.prevMessage
-            this.setState({ prevMessage: message });
+            this.setState({ prevMessage: message }, this.AddData());
             this.AddData();
         }
 
     }
     food = () => {
         if (this.state.type !== 0) {
-            this.setState({ type: 0 });
-            this.AddData();
+            this.setState({ type: 0 }, this.AddData);
+
         }
     }
-    fashio = () => {
+    fashion = () => {
         if (this.state.type !== 1) {
-            this.setState({ type: 1 });
-            this.AddData();
+            this.setState({ type: 1 }, this.AddData);
         }
     }
     all = () => {
         if (this.state.type !== -1) {
-            this.setState({ type: -1 });
-            this.AddData();
+            this.setState({ type: -1 }, this.AddData);
         }
     }
 
@@ -65,14 +63,14 @@ class ProductDisplay extends Component {
     }
     onchange = (e) => { this.setState({ [e.target.name]: e.target.value }) }
     AddData = () => {
+        console.log("this is type :", this.state.type);
         var tags = localStorage.getItem('giftTarget');
         tags = JSON.parse(tags);
         this.setState({ tags: tags })
         //console.log(this.state);
         let frame = document.getElementById("postDataProd");
-        let frameCores = document.getElementById("couroselProd");
+
         frame.innerHTML = '';
-        frameCores.innerHTML = "";
 
         if (frame != null && this.props.aka && this.props.aka[0]) {
 

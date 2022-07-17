@@ -123,7 +123,35 @@
     display: inline-block;
     float: right;
 }
-
+.postDataSecongTwo{
+    height: 250px;
+    display: block;
+    overflow: scroll;
+}
+.ProductsPage{
+    margin-top: 50px;
+}
+.EditCard{
+    display: inline-block !important;
+    padding: 5px;
+}
+.EditIcon{
+    float: right;
+}
+.teaxAreaView textarea{
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+}
+.teaxAreaView div{
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+    border: 1px solid #282c34;
+    box-shadow: 2px 2px 2px #282c34;
+    border-radius: 3px;
+    padding: 3px;
+}
 @media screen and (max-width: 400px) {
     .rightContent{
         width: 100%;
@@ -147,4 +175,8 @@
         width: 150px;
     }
     
+}
+
+::-webkit-scrollbar{
+    width: 1px;
 }

@@ -30,11 +30,12 @@ class Content extends Component {
 
             let frame = document.getElementById("postData");
             let frameCores = document.getElementById("couroselProd");
-            frame.innerHTML = '';
-            frameCores.innerHTML = "";
-            if (frame != null && this.props.aka && this.props.aka[0]) {
 
+            if (frame != null && this.props.aka && this.props.aka[0]) {
+                frame.innerHTML = '';
+                frameCores.innerHTML = "";
                 if (this.props.aka[0].product) {
+                    var productCount = 0;
                     for (let prod of this.props.aka[0].product) {
                         //    console.log(prod)
                         if (ContainsTag(prod.tags)) {
@@ -42,8 +43,11 @@ class Content extends Component {
 
                             newSpan.innerHTML = prod.frameWork;
                             frame.appendChild(newSpan);
+                            productCount += 1;
                         }
+                        if (productCount > 6) break;
                     }
+                    productCount = 0;
                     var count = 0;
                     for (let prodd of this.props.aka[0].product) {
                         // console.log(prod)
@@ -60,6 +64,7 @@ class Content extends Component {
                             newSpan.appendChild(imgEle)
                             frameCores.appendChild(newSpan);
                         }
+                        if (productCount > 6) break;
                     }
 
                 }
@@ -94,7 +99,7 @@ class Content extends Component {
                 </div>
 
 
-                <div id='postData' >
+                <div className='postDataSecongTwo' id='postData' >
 
                 </div>
 
